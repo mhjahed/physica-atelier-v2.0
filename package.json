@@ -1,0 +1,23 @@
+{
+  "name": "physica-atelier-european-physics-laboratory",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Interactive 3D Physics Laboratory & Curriculum Platform — 8 calibrated experimental modules, live vector telemetry, and 24 guided student challenges.",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "node serve-local.mjs",
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "verify:physics": "node tests/verify-physics.mjs"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11"
+  }
+}

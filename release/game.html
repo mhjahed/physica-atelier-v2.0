@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#F6F5F0" />
+  <title>Physica Atelier — Interactive 3D Physics Laboratory &amp; Curriculum</title>
+  <script type="module" crossorigin src="./assets/three-vendor-D1woTvpy.js"></script>
+  <script type="module" crossorigin src="./assets/main-CMnGl0UR.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-Dnowb4VX.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <button type="button" class="brand-mark" id="brand-home-btn" aria-label="Return to Physics Syllabus Overview">
+        <span class="brand-code">PHY &middot; 101–208</span>
+        <span class="brand-title">Physica Atelier</span>
+        <span class="brand-dept">Open Interactive Physics Laboratory</span>
+      </button>
+
+      <nav class="primary-nav" aria-label="Primary sections">
+        <button type="button" class="nav-tab active" data-view="overview">01. Syllabus &amp; Overview</button>
+        <button type="button" class="nav-tab" data-view="studio">02. Interactive 3D Bench</button>
+        <button type="button" class="nav-tab" data-view="curriculum">03. Equations &amp; Field Guide</button>
+        <button type="button" class="nav-tab" data-view="audit">04. Engineering Audit</button>
+      </nav>
+
+      <div class="header-ledger" aria-live="polite">
+        <span class="ledger-pill">Stamps: <strong id="header-stamps-count">0 / 24</strong></span>
+        <span class="ledger-pill">Score: <strong id="header-score-count">0 pts</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section id="view-overview" class="app-view active">
+      <div class="editorial-shell">
+        <div class="editorial-hero">
+          <div>
+            <span class="eyebrow-label">Department of Experimental &amp; Applied Physics &middot; Edition 2.0</span>
+            <h1 class="hero-headline">
+              Test physical laws directly on a calibrated three-dimensional bench.
+            </h1>
+            <p class="hero-lead">
+              Built for junior and secondary physics students who learn faster by manipulating real apparatus than memorizing isolated formulas. Adjust mass, airfoil camber, gas compression, resistor bands, double-slit coherence, pendulum length, and refractive indices while watching force vectors and live plots respond together.
+            </p>
+
+            <div class="hero-actions">
+              <button type="button" class="btn btn-primary" data-nav-target="studio">
+                Enter Interactive 3D Laboratory &rarr;
+              </button>
+              <button type="button" class="btn btn-outline" data-nav-target="curriculum">
+                Read Equations &amp; Study Notes
+              </button>
+              <button type="button" class="btn btn-outline" data-nav-target="audit">
+                View v2.0 Bug Audit Log
+              </button>
+            </div>
+
+            <div class="spec-strip">
+              <div>
+                <div class="spec-item-num">08</div>
+                <div class="spec-item-label">Calibrated 3D Apparatus Modules</div>
+              </div>
+              <div>
+                <div class="spec-item-num">24</div>
+                <div class="spec-item-label">Quantitative Lab Challenges</div>
+              </div>
+              <div>
+                <div class="spec-item-num" id="hero-verified-count">0</div>
+                <div class="spec-item-label">Completed Ledger Checks (Saved Locally)</div>
+              </div>
+            </div>
+          </div>
+
+          <figure class="editorial-figure">
+            <img
+              src="./media/hero-mechanics-lab.jpg"
+              alt="Sunlit university physics teaching bench with brass Foucault pendulum, optical rail, vernier calipers, and handwritten laboratory notebook"
+            />
+            <figcaption class="figure-caption">
+              <span>Fig. 1.0 &mdash; Classical Mechanics, Optical Rail &amp; Isochronous Pendulum Bench</span>
+              <span>SI Calibrated</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="section-header-row">
+          <div>
+            <span class="eyebrow-label" style="margin-bottom:0.3rem;">Laboratory Index</span>
+            <h2 class="section-heading">Eight Interactive Experimental Benches</h2>
+          </div>
+          <p class="section-sub">
+            Select any module row below to load its 3D apparatus, live scientific plotter, vernier parameter controls, and three quantitative student verification stamps.
+          </p>
+        </div>
+
+        <div class="apparatus-index" id="apparatus-index"></div>
+
+        <div class="visual-plates-strip">
+          <figure class="editorial-figure">
+            <img src="./media/wind-tunnel-study.jpg" alt="Subsonic open-return glass wind tunnel test section showing smoke streamlines over aluminum airfoil" loading="lazy" />
+            <figcaption class="figure-caption">
+              <span>Plate I &mdash; Module 02: NACA 2412 Streamlines &amp; Stall</span>
+            </figcaption>
+          </figure>
+
+          <figure class="editorial-figure">
+            <img src="./media/thermodynamics-apparatus.jpg" alt="Glass Boyle-Mariotte gas compression piston and brass pressure gauge on laboratory bench" loading="lazy" />
+            <figcaption class="figure-caption">
+              <span>Plate II &mdash; Module 03: Boyle-Mariotte Piston &amp; Gauge</span>
+            </figcaption>
+          </figure>
+
+          <figure class="editorial-figure">
+            <img src="./media/optics-electro-bench.jpg" alt="Digital storage oscilloscope, RC breadboard circuit, copper coil, and glass prism refracting spectrum" loading="lazy" />
+            <figcaption class="figure-caption">
+              <span>Plate III &mdash; Modules 04 &amp; 07: RC Scope &amp; Optical Prism</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-studio" class="app-view studio-mode" aria-label="Interactive 3D Physics Studio">
+      <div class="module-selector-bar" id="module-selector-bar" role="tablist"></div>
+
+      <div class="studio-grid">
+        <div class="viewport-pane">
+          <div id="webgl-mount"></div>
+
+          <div class="viewport-equation-plate">
+            <div class="vp-eq-tag" id="vp-eq-tag">MODULE 01 &middot; NEWTONIAN TRAJECTORY</div>
+            <div class="vp-eq-math" id="vp-eq-math">ma = mg &minus; &frac12;&rho;CdA|v|v</div>
+            <span class="vp-status-flag" id="vp-status-flag">CALIBRATED</span>
+          </div>
+
+          <div class="viewport-toolbar" role="toolbar" aria-label="Viewport instruments">
+            <button type="button" class="vp-tool-btn" data-cam="isometric">Iso View</button>
+            <button type="button" class="vp-tool-btn" data-cam="elevation">Side View</button>
+            <button type="button" class="vp-tool-btn" data-cam="plan">Top Plan</button>
+            <button type="button" class="vp-tool-btn active" id="tool-vectors">Vectors</button>
+            <button type="button" class="vp-tool-btn" id="tool-slow">0.25&times; Slow</button>
+            <button type="button" class="vp-tool-btn" id="tool-pause">Pause</button>
+            <button type="button" class="vp-tool-btn" id="tool-step">Step +16ms</button>
+          </div>
+
+          <div class="bench-banner" id="bench-banner" role="status" aria-live="polite">
+            <div class="bench-banner-title" id="bench-banner-title">Ready</div>
+            <div class="bench-banner-detail" id="bench-banner-detail"></div>
+          </div>
+
+          <div class="viewport-telemetry-bar">
+            <div class="telemetry-readouts" id="telemetry-readouts"></div>
+            <div class="orbit-caption">Drag: Orbit &middot; Scroll/Pinch: Zoom &middot; Right-Drag: Pan</div>
+          </div>
+        </div>
+
+        <aside class="console-pane" aria-label="Apparatus controls and student guide">
+          <div class="console-tabs">
+            <button type="button" class="console-tab active" data-tab="controls">Apparatus</button>
+            <button type="button" class="console-tab" data-tab="challenges">Challenges (3)</button>
+            <button type="button" class="console-tab" data-tab="concept">Notes &amp; Quiz</button>
+          </div>
+
+          <div id="tab-controls" class="console-section active">
+            <div id="dynamic-sliders-mount" style="display:flex;flex-direction:column;gap:0.75rem;"></div>
+            <div class="plotter-plate">
+              <canvas id="scientific-plotter"></canvas>
+            </div>
+          </div>
+
+          <div id="tab-challenges" class="console-section"></div>
+          <div id="tab-concept" class="console-section"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="view-curriculum" class="app-view">
+      <div class="editorial-shell">
+        <span class="eyebrow-label">Illustrated Student Handbook</span>
+        <h2 class="hero-headline" style="font-size:2.2rem;">Curriculum Reference &amp; Physical Intuitions</h2>
+        <p class="hero-lead">
+          Each module pairs its governing SI law with plain-language explanations of common classroom pitfalls. Review any section below or jump straight into its 3D bench.
+        </p>
+        <div id="monograph-list"></div>
+      </div>
+    </section>
+
+    <section id="view-audit" class="app-view">
+      <div class="editorial-shell">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem;">
+          <div>
+            <span class="eyebrow-label">Quality Assurance &amp; Physics Fidelity</span>
+            <h2 class="hero-headline" style="font-size:2.1rem;margin-bottom:0.5rem;">v1.0 &rarr; v2.0 Engineering Repair Audit</h2>
+            <p class="section-sub">
+              Every mathematical error, inverted 3D transform, particle escape bug, dead toggle, and GPU memory leak found in the legacy code was isolated, repaired, and covered by deterministic regression assertions.
+            </p>
+          </div>
+          <button type="button" class="btn btn-primary" id="run-live-diagnostics">
+            Run Live Physics Verification Suite
+          </button>
+        </div>
+
+        <pre
+          id="diagnostics-output"
+          style="display:none;background:#14181F;color:#FAF9F6;font-family:var(--font-mono);font-size:0.79rem;padding:1.15rem;border-radius:2px;margin-bottom:1.75rem;overflow-x:auto;line-height:1.6;"
+        ></pre>
+
+        <div class="audit-table-wrap">
+          <table class="audit-table">
+            <thead>
+              <tr>
+                <th>ID &amp; Module</th>
+                <th>Classification</th>
+                <th>Legacy v1.0 Defect</th>
+                <th>Root Technical Cause</th>
+                <th>v2.0 Calibrated Fix</th>
+              </tr>
+            </thead>
+            <tbody id="audit-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span><strong>Physica Atelier v2.0</strong> &mdash; Open Educational Physics Laboratory (Zero Backend &middot; Offline Static Build Ready)</span>
+      <span>8 Calibrated Modules &middot; 24 Lab Stamps &middot; SI Units Throughout</span>
+    </div>
+  </footer>
+
+</body>
+</html>
