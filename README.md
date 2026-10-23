@@ -2,6 +2,8 @@
 
 An open educational 3D physics laboratory and illustrated curriculum built for junior and secondary students. Every module pairs a calibrated Three.js physical bench (daylight studio PBR environment, 3D force vectors, slow-motion and single-frame stepping) with a real-time 2D scientific plotter, three quantitative lab challenges, and diagnostic check questions.
 
+<a href="https://physica-atelier-v20-lilac.vercel.app/">Open this project live</a>
+
 ## Running on Your PC (Fully Tested for Node.js v22 LTS)
 
 This project uses standard ES Modules (`"type": "module"`) and pure Node built-in APIs (`node:http`, `node:fs`, `node:path`, `node:url`, `node:assert/strict`), so it runs out of the box on **Node.js 18, 20, and 22 LTS** on Windows 10/11, macOS, and Linux.
